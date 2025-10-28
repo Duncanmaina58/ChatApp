@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173", // your React app
+    origin: "https://chat-app-red-nu-48.vercel.app/", // your React app
     credentials: true,               // allow cookies and auth headers
   })
 );

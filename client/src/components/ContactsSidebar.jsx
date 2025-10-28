@@ -85,7 +85,7 @@ export default function ContactsSidebar({ onOpenChat }) {
   const accessChat = async (userId) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/chat/private/${userId}`,
+        `https://chatapp-ktbk.onrender.com/api/chat/private/${userId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       onOpenChat(data);

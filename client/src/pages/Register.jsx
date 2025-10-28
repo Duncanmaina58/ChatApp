@@ -15,7 +15,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:4000/api/auth/register", form);
+      const { data } = await axios.post("https://chatapp-ktbk.onrender.com/api/auth/register", form);
       localStorage.setItem("token", data.token);
       navigate("/login");
     } catch (err) {

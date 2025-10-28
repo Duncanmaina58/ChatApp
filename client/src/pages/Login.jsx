@@ -20,7 +20,7 @@ export default function Login() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        "https://chatapp-ktbk.onrender.com/api/auth/login",
         form
       );
 
