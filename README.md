@@ -1,277 +1,207 @@
-💬 Full Stack Real-Time Chat Application
-📘 Overview
+# 💬 Real-Time Chat Application
 
-This project is a real-time chat application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Socket.io for live messaging and user presence. It supports private and group chats, authentication, online status, and a clean, responsive UI designed with Tailwind CSS.
+A **full-stack real-time chat application** built with the **MERN (MongoDB, Express, React, Node.js)** stack, featuring **user authentication**, **real-time messaging with Socket.io**, and **group chat functionality**.
 
-The app allows users to:
+---
 
-Register and log in securely.
+## 🚀 Live Links
 
-Send and receive instant messages.
+- **Frontend (Vercel):** [https://chat-app-red-nu-48.vercel.app](https://chat-app-red-nu-48.vercel.app)  
+- **Backend (Render):** [https://chatapp-ktbk.onrender.com](https://chatapp-ktbk.onrender.com)
 
-Create and manage group chats.
+---
 
-View the latest messages in chat previews.
+## 📖 Table of Contents
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Tech Stack](#tech-stack)
+4. [System Architecture](#system-architecture)
+5. [Setup Instructions](#setup-instructions)
+6. [Environment Variables](#environment-variables)
+7. [API Endpoints](#api-endpoints)
+8. [Socket.io Events](#socketio-events)
+9. [Folder Structure](#folder-structure)
+10. [Deployment](#deployment)
+11. [Contributors](#contributors)
+12. [License](#license)
 
-See which users are currently online.
+---
 
-🧠 Project Objectives
+## 🧩 Project Overview
 
-This project was developed to demonstrate key TVET Level 6 Computer Programming competencies, including:
+This project is a **real-time chat system** that allows users to:
+- Create accounts and log in securely using JWT authentication.
+- Chat one-on-one or in groups.
+- See **online/offline status**, **typing indicators**, and **read receipts**.
+- Manage contacts and start new conversations instantly.
 
-Full-stack web application development.
+---
 
-REST API design and documentation.
+## 🌟 Features
 
-Database modeling using MongoDB.
+✅ User registration and login (JWT Authentication)  
+✅ Real-time one-on-one messaging via Socket.io  
+✅ Create and manage group chats  
+✅ Typing and online status indicators  
+✅ Read and delivered message ticks  
+✅ Responsive UI styled like WhatsApp  
+✅ Secure password hashing with bcrypt  
+✅ Persistent sessions using localStorage  
+✅ RESTful API backend  
 
-Real-time communication using WebSockets.
+---
 
-Frontend state management and component design.
+## 🛠 Tech Stack
 
-Deployment and cloud hosting on Render (backend) and Vercel (frontend).
+### **Frontend**
+- React.js (Vite)
+- Tailwind CSS
+- Axios
+- React Router DOM
+- Socket.io-client
 
-✨ Features
-👤 Authentication
+### **Backend**
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- Socket.io
+- JWT for authentication
+- CORS for cross-origin requests
 
-Register, login, and logout using JWT tokens.
+---
 
-Authenticated API routes with token validation.
+## 🧱 System Architecture
 
-Secure password storage using bcrypt.
+Frontend (React) <-----> Backend (Express API)
+↑ ↓
+Socket.io Client <-----> Socket.io Server
+↑ ↓
+MongoDB Database <-----> Mongoose Models
 
-💬 Messaging
+yaml
+Copy code
 
-Instant text-based communication.
+---
 
-Private 1-on-1 chats.
+## ⚙️ Setup Instructions
 
-Group chats with multiple members.
+### 1️⃣ Clone the repository
 
-Last message preview in chat list.
-
-👥 Groups
-
-Create new groups.
-
-Add or remove members (admin only).
-
-Manage group names and participants.
-
-🟢 Real-Time Functionality
-
-Live message updates via Socket.io.
-
-Online/offline user status indicators.
-
-⚙️ Other Features
-
-Responsive UI built with Tailwind CSS.
-
-Backend API and frontend integrated seamlessly.
-
-Deployed on cloud services (Render + Vercel).
-
-🧩 Technologies Used
-Category	Technology
-Frontend	React.js, Vite, Tailwind CSS, Axios, React Router
-Backend	Node.js, Express.js
-Database	MongoDB, Mongoose
-Realtime	Socket.io
-Authentication	JWT (JSON Web Token)
-Hosting	Render (Backend), Vercel (Frontend)
-🏗️ System Architecture
-
-Frontend (React) → communicates via Axios → Backend API (Express) → stores data in MongoDB → syncs live events using Socket.io.
-
-React (Client)
-    │
-    ├── Axios (HTTP)
-    │
-    ▼
-Express.js (Server)
-    │
-    ├── Mongoose ORM
-    ▼
-MongoDB (Database)
-
-🗂️ Folder Structure
-Frontend (/client)
-client/
- ├── src/
- │   ├── api/
- │   ├── components/
- │   ├── context/
- │   ├── pages/
- │   ├── socket/
- │   ├── App.jsx
- │   └── main.jsx
- ├── package.json
- └── vite.config.js
-
-Backend (/server)
-server/
- ├── controllers/
- ├── middleware/
- ├── models/
- ├── routes/
- ├── config/
- ├── server.js
- └── package.json
-
-🧾 Database Design
-Collections
-
-User
-
-username
-
-email
-
-password (hashed)
-
-avatar (optional)
-
-Chat
-
-chatName
-
-isGroup (boolean)
-
-users (array of user IDs)
-
-latestMessage (reference)
-
-groupAdmin (if group)
-
-Message
-
-sender (user)
-
-content (text)
-
-chat (reference)
-
-readBy (array of user IDs)
-
-timestamps
-
-🔌 API Endpoints
-Method	Endpoint	Description
-POST	/api/auth/register	Register a new user
-POST	/api/auth/login	Log in existing user
-GET	/api/users	Fetch all users
-GET	/api/chat	Fetch user’s chats
-GET	/api/chat/private/:userId	Access or create private chat
-POST	/api/chat/group	Create group chat
-PUT	/api/chat/:chatId/add	Add user(s) to group
-PUT	/api/chat/:chatId/remove	Remove user from group
-GET	/api/messages/:chatId	Get chat messages
-POST	/api/messages	Send a new message
-⚙️ Setup & Installation
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/chat-app.git
+```bash
+git clone https://github.com/yourusername/chat-app.git
 cd chat-app
-
-2️⃣ Backend Setup
+2️⃣ Setup backend
+bash
+Copy code
 cd server
 npm install
-
-
-Create a .env file:
-
-PORT=4000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_jwt_secret
-CLIENT_URL=https://chat-app-red-nu-48.vercel.app
-
-
-Run server:
-
-npm start
-
-
-Server will start at: http://localhost:4000
-
-3️⃣ Frontend Setup
+3️⃣ Setup frontend
+bash
+Copy code
 cd client
 npm install
+4️⃣ Run the development servers
+Start backend
+
+bash
+Copy code
 npm run dev
+Start frontend
 
+bash
+Copy code
+npm run dev
+🔐 Environment Variables
+Create a .env file in the server directory with the following:
 
-Visit: http://localhost:5173
+env
+Copy code
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+CLIENT_URL=https://chat-app-red-nu-48.vercel.app
+🔗 API Endpoints
+Method	Endpoint	Description
+POST	/api/auth/register	Register a new user
+POST	/api/auth/login	Login user
+GET	/api/users	Fetch all users
+GET	/api/chat	Get all chats for user
+POST	/api/chat	Create or fetch one-on-one chat
+POST	/api/chat/group	Create new group chat
+PUT	/api/chat/rename	Rename group chat
+PUT	/api/chat/add	Add member to group
+PUT	/api/chat/remove	Remove member from group
+GET	/api/message/:chatId	Get all messages for a chat
+POST	/api/message	Send a new message
 
+💬 Socket.io Events
+Event	Description
+setup	Initialize socket connection
+join chat	Join a chat room
+new message	Send/receive a message in real-time
+typing	Show typing indicator
+stop typing	Remove typing indicator
+online / offline	Update user online status
+delivered / read	Update message delivery status
+
+🗂 Folder Structure
+bash
+Copy code
+chat-app/
+│
+├── client/                # React frontend
+│   ├── src/
+│   │   ├── components/    # UI components
+│   │   ├── pages/         # App pages (Login, Chat, etc.)
+│   │   ├── context/       # Auth context
+│   │   ├── api/           # Axios setup
+│   │   └── App.jsx
+│   └── package.json
+│
+├── server/                # Node.js backend
+│   ├── controllers/       # Route controllers
+│   ├── models/            # MongoDB models
+│   ├── routes/            # API routes
+│   ├── server.js          # Entry point
+│   ├── socket.js          # Socket.io configuration
+│   └── package.json
+│
+└── README.md
 🌍 Deployment
-🖥️ Backend (Render)
+Frontend
+Deployed using Vercel
 
-Push your code to GitHub.
+bash
+Copy code
+npm run build
+Deploy via https://vercel.com
 
-Create a Render Web Service.
+Backend
+Deployed using Render
 
-Connect repository → Select branch → Add environment variables.
+bash
+Copy code
+git push origin main
+Configure:
 
-Deploy 🚀
+Root directory: /server
 
-💻 Frontend (Vercel)
+Start command: npm start
 
-Push frontend to GitHub.
+Environment variables: same as .env
 
-Create a Vercel Project.
+👨‍💻 Contributors
+Name	Role
+Duncan Nyaga Maina	Developer / Designer
 
-Add vercel.json to root:
+📜 License
+This project is licensed under the MIT License – feel free to use and modify.
 
-{
-  "version": 2,
-  "builds": [{ "src": "vite.config.js", "use": "@vercel/static-build", "config": { "distDir": "dist" } }],
-  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
-}
+🧠 Acknowledgments
+Socket.io Documentation
 
+Render Deployment Guide
 
-Deploy 🎉
+Vercel Deployment Guide
 
-🧪 Testing
-
-Unit tests can be added using Jest or Mocha.
-
-Manual testing performed for:
-
-Login & Register
-
-Real-time chat
-
-Group creation
-
-Socket.io live updates
-
-📸 Screenshots
-
-(Attach screenshots here once ready)
-
-✅ Login Page
-
-✅ Chat Interface
-
-✅ Group Creation Modal
-
-✅ Online/Offline Indicators
-
-👨‍💻 Developer
-
-Name: Duncan Nyaga Maina
-Email: dun.can.duntez@gmail.com
-
-LinkedIn: linkedin.com/in/duncan-maina58
-
-Location: Ithanga, Murang’a, Kenya
-
-🏁 Conclusion
-
-This project demonstrates the implementation of a complete real-time communication system integrating frontend and backend technologies. It aligns with TVET Level 6 practical assessment requirements, showcasing expertise in:
-
-Full-stack application development
-
-API and database integration
-
-Real-time systems using Socket.io
-
-Modern frontend design and deployment
+MongoDB Atlas
